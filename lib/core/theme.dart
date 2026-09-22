@@ -15,6 +15,7 @@ class AppColors {
 class AppTheme {
   static ThemeData light = ThemeData(
     useMaterial3: true,
+    fontFamily: "Poppins",
 
     colorScheme: const ColorScheme.light(
       primary: AppColors.darkBlue,
