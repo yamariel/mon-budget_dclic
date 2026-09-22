@@ -10,9 +10,12 @@ dependencies:
   cloud_firestore: ^6.10.0
   firebase_auth: ^6.7.0
   firebase_core: ^4.15.0
+  fl_chart: ^1.2.0
   flutter:
     sdk: flutter
   flutter_native_splash: ^2.4.8
+  intl: ^0.20.3
+  provider: ^6.1.5+1
 
 dev_dependencies:
   flutter_test:
