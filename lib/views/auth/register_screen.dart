@@ -102,7 +102,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   children: [
                     MyTextField(
                       controller: passwordConfirm,
-                      obscureText: true,
+                      obscureText: _obscurePasswordConfirm,
                       hintText: 'Confirmez le mot de passe',
                     ),
                     Padding(
@@ -128,7 +128,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ? const CircularProgressIndicator(color: Colors.white)
                     : MyButton(
                         text: "S'inscrire",
-                        onTap: () {
+                        onTap: () async {
                           if (password.text != passwordConfirm.text) {
                             setState(() {
                               _localError =
