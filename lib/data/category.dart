@@ -8,3 +8,5 @@ final categories = [
   Category(id: 'sante', name: 'Santé', colorHex: '#8E7CC3'),
   Category(id: 'autre', name: 'Autre', colorHex: '#9AA5B1'),
 ];
+Category categoryById(String id) =>
+    categories.firstWhere((c) => c.id == id, orElse: () => categories.last);
