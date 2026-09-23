@@ -19,6 +19,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final password = TextEditingController();
   final passwordConfirm = TextEditingController();
   bool _obscurePassword = true;
+  bool _obscurePasswordConfirm = true;
   String? _localError;
 
   @override
@@ -108,14 +109,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       padding: const EdgeInsets.only(right: 20),
                       child: IconButton(
                         icon: Icon(
-                          _obscurePassword
+                          _obscurePasswordConfirm
                               ? Icons.visibility_off
                               : Icons.visibility,
                           color: Colors.grey[700],
                         ),
                         onPressed: () {
                           setState(() {
-                            _obscurePassword = !_obscurePassword;
+                            _obscurePasswordConfirm = !_obscurePasswordConfirm;
                           });
                         },
                       ),
