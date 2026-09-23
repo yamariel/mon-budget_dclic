@@ -42,6 +42,7 @@ class _RootScreen extends StatelessWidget {
       return LoginScreen();
     }
     return ChangeNotifierProvider(
+      key: ValueKey(user.uid),
       create: (_) => TransactionController(user.uid),
       child: HomeScreen(),
     );
