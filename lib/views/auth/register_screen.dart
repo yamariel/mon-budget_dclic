@@ -5,24 +5,27 @@ import '../../controllers/auth_controller.dart';
 import '../../widgets/my_button.dart';
 import '../../widgets/my_text_field.dart';
 import '../../widgets/square_title.dart';
-import 'register_screen.dart';
+import 'login_screen.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   final email = TextEditingController();
-
   final password = TextEditingController();
+  final passwordConfirm = TextEditingController();
   bool _obscurePassword = true;
+  String? _localError;
+
   @override
   void dispose() {
     email.dispose();
     password.dispose();
+    passwordConfirm.dispose();
     super.dispose();
   }
 
@@ -37,10 +40,11 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const SizedBox(height: 30),
                 Image.asset("assets/logo.png", height: 140, width: 140),
                 const SizedBox(height: 10),
                 const Text(
-                  "Bon retour",
+                  "Bienvenu sur Budgeto",
                   style: TextStyle(fontSize: 28, color: Colors.black),
                 ),
                 const SizedBox(height: 10),
@@ -54,13 +58,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   obscureText: false,
                   hintText: 'Email',
                 ),
-                if (auth.errorMessage != null) ...[
+                if (auth.errorMessage != null || _localError != null) ...[
                   const SizedBox(height: 12),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Text(
-                      auth.errorMessage!,
-                      style: TextStyle(color: Colors.red),
+                      _localError ?? auth.errorMessage!,
+                      style: const TextStyle(color: Colors.red),
                     ),
                   ),
                 ],
@@ -91,15 +95,49 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
+                const SizedBox(height: 30),
+                Stack(
+                  alignment: Alignment.centerRight,
+                  children: [
+                    MyTextField(
+                      controller: passwordConfirm,
+                      obscureText: true,
+                      hintText: 'Confirmez le mot de passe',
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 20),
+                      child: IconButton(
+                        icon: Icon(
+                          _obscurePassword
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                          color: Colors.grey[700],
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _obscurePassword = !_obscurePassword;
+                          });
+                        },
+                      ),
+                    ),
+                  ],
+                ),
                 const SizedBox(height: 40),
                 auth.isLoading
                     ? const CircularProgressIndicator(color: Colors.white)
                     : MyButton(
-                        text: "Se connecter",
-                        onTap: () => context.read<AuthController>().signIn(
-                          email.text,
-                          password.text,
-                        ),
+                        text: "S'inscrire",
+                        onTap: () {
+                          if (password.text != passwordConfirm.text) {
+                            setState(() {
+                              _localError =
+                                  "Les mots de passe ne correspondent pas.";
+                            });
+                            return;
+                          }
+                          setState(() => _localError = null);
+                          context.read<AuthController>().signUp(email.text, password.text);
+                        },
                       ),
                 const SizedBox(height: 40),
                 Padding(
@@ -131,28 +169,26 @@ class _LoginScreenState extends State<LoginScreen> {
                     SquareTitle(pahtImage: "assets/apple.png"),
                   ],
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      "Pas de compte ?",
+                      "Déjà un compte ?",
                       style: TextStyle(color: Colors.black),
                     ),
                     const SizedBox(width: 8),
                     GestureDetector(
                       onTap: () => Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (_) => const RegisterScreen(),
-                        ),
+                        MaterialPageRoute(builder: (_) => const LoginScreen()),
                       ),
                       child: Text(
-                        "S'inscrire",
+                        "Se connecter",
                         style: TextStyle(
                           color: Colors.blue,
-                          fontWeight: FontWeight.bold,
                           decoration: TextDecoration.underline,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
