@@ -7,7 +7,7 @@ Projet individuel réalisé dans le cadre du parcours **DCLIC « Formez-vous au 
 
 ## Auteur
 
-- **Auteur** : [Ariel YAMIEN](github.com/yamariel)
+- **Auteur** : [Ariel YAMIEN](https://github.com/yamariel)
 - **Formation** : DCLIC — Organisation Internationale de la Francophonie (OIF)
 
 ---
