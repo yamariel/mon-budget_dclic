@@ -5,6 +5,13 @@ Projet individuel réalisé dans le cadre du parcours **DCLIC « Formez-vous au 
 
 ---
 
+## Auteur
+
+- **Auteur** : [Ariel YAMIEN](github.com/yamariel)
+- **Formation** : DCLIC — Organisation Internationale de la Francophonie (OIF)
+
+---
+
 ## Présentation & Problématique
 
 Beaucoup de personnes gèrent leurs dépenses au quotidien de tête ou sur papier, sans visibilité
@@ -38,7 +45,7 @@ obtenir une vue d'ensemble immédiate de sa situation financière personnelle.
 
 ---
 
-## 📸 Captures d'Écran (Aperçu)
+## Captures d'Écran (Aperçu)
 
 |                      Écran de Démarrage                      |                   Connexion & Inscription                   |                    Accueil & Solde                     |
 |:------------------------------------------------------------:|:-----------------------------------------------------------:|:------------------------------------------------------:|
@@ -54,7 +61,7 @@ obtenir une vue d'ensemble immédiate de sa situation financière personnelle.
 
 ---
 
-## 🏗️ Architecture & Choix Techniques
+## Architecture & Choix Techniques
 
 L'application respecte le patron d'architecture **MVC (Models / Views / Controllers)** couplé à des
 **Services** pour la gestion de Firebase :
@@ -87,11 +94,13 @@ lib/
 ├── core/                 
 │   ├── theme.dart
 │   └── buget_colors.dart
-└── data/     
-    └── category.dart
+├── data/     
+│   └── category.dart
+├── firebase_options.dart
+└── main.dart
 ```
 
-### 🛠️ Tech Stack & Dépendances
+### Tech Stack & Dépendances
 
 - **Framework** : Flutter / Dart
 - **Backend & Base de données** : Firebase Authentication + Cloud Firestore
@@ -100,7 +109,7 @@ lib/
 
 ---
 
-## 🔒 Sécurité & Persistance
+## Sécurité & Persistance
 
 - **Règles Cloud Firestore** : Seul l'utilisateur propriétaire connecté peut lire et écrire dans ses
   propres données (`request.auth.uid == userId`).
