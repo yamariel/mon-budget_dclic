@@ -50,4 +50,20 @@ class AuthController extends ChangeNotifier {
   }
 
   Future<void> signOut() => _authService.signOut();
+
+  Future<bool> deleteAccount() async {
+    isLoading = true;
+    errorMessage = null;
+    notifyListeners();
+    try {
+      await _authService.deleteUserAccount();
+      return true;
+    } catch (e) {
+      errorMessage = _authService.readableError(e);
+      return false;
+    } finally {
+      isLoading = false;
+      notifyListeners();
+    }
+  }
 }
