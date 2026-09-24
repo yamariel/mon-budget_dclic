@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../controllers/auth_controller.dart';
+import '../../core/theme.dart';
 import '../../widgets/my_button.dart';
 import '../../widgets/my_text_field.dart';
 import '../../widgets/square_title.dart';
@@ -30,25 +31,29 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final auth = context.watch<AuthController>();
     return Scaffold(
-      backgroundColor: Colors.grey[400],
+      backgroundColor: AppColors.lightGray,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset("assets/logo.png", height: 140, width: 140),
-                const SizedBox(height: 10),
+                Image.asset("assets/logo.png", height: 120, width: 120),
+                const SizedBox(height: 16),
                 const Text(
                   "Bon retour",
-                  style: TextStyle(fontSize: 28, color: Colors.black),
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.text,
+                  ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 8),
                 const Text(
-                  "L'application qui vous aide à géré vos budget",
-                  style: TextStyle(fontSize: 14, color: Colors.black),
+                  "L'application qui vous aide à gérer vos budgets",
+                  style: TextStyle(fontSize: 14, color: AppColors.textSecondary),
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 32),
                 MyTextField(
                   controller: email,
                   obscureText: false,
@@ -60,11 +65,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Text(
                       auth.errorMessage!,
-                      style: TextStyle(color: Colors.red),
+                      style: const TextStyle(color: AppColors.expenseRed),
                     ),
                   ),
                 ],
-                const SizedBox(height: 30),
+                const SizedBox(height: 20),
                 Stack(
                   alignment: Alignment.centerRight,
                   children: [
@@ -74,13 +79,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       hintText: 'Mot de passe',
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 20),
+                      padding: const EdgeInsets.only(right: 25),
                       child: IconButton(
                         icon: Icon(
                           _obscurePassword
                               ? Icons.visibility_off
                               : Icons.visibility,
-                          color: Colors.grey[700],
+                          color: AppColors.textSecondary,
                         ),
                         onPressed: () {
                           setState(() {
@@ -91,9 +96,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 32),
                 auth.isLoading
-                    ? const CircularProgressIndicator(color: Colors.white)
+                    ? const CircularProgressIndicator(color: AppColors.primary)
                     : MyButton(
                         text: "Se connecter",
                         onTap: () => context.read<AuthController>().signIn(
@@ -101,43 +106,43 @@ class _LoginScreenState extends State<LoginScreen> {
                           password.text,
                         ),
                       ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 32),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Row(
-                    children: [
+                    children: const [
                       Expanded(
-                        child: Divider(thickness: 0.5, color: Colors.white),
+                        child: Divider(thickness: 1, color: Color(0xFFE2E8F0)),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: const Text(
-                          "Où continuez avec",
-                          style: TextStyle(color: Colors.black),
+                        padding: EdgeInsets.symmetric(horizontal: 10.0),
+                        child: Text(
+                          "Ou continuez avec",
+                          style: TextStyle(color: AppColors.textSecondary),
                         ),
                       ),
                       Expanded(
-                        child: Divider(thickness: 0.5, color: Colors.white),
+                        child: Divider(thickness: 1, color: Color(0xFFE2E8F0)),
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 32),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     SquareTitle(pahtImage: "assets/google.png"),
-                    const SizedBox(width: 10),
+                    SizedBox(width: 16),
                     SquareTitle(pahtImage: "assets/apple.png"),
                   ],
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 32),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
                       "Pas de compte ?",
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(color: AppColors.textSecondary),
                     ),
                     const SizedBox(width: 8),
                     GestureDetector(
@@ -147,10 +152,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           builder: (_) => const RegisterScreen(),
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         "S'inscrire",
                         style: TextStyle(
-                          color: Colors.blue,
+                          color: AppColors.primary,
                           fontWeight: FontWeight.bold,
                           decoration: TextDecoration.underline,
                         ),
