@@ -7,13 +7,13 @@ class SquareTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.white),
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.grey[200]
+        border: Border.all(color: const Color(0xFFE2E8F0)),
+        borderRadius: BorderRadius.circular(12),
+        color: Colors.white,
       ),
-      child: Image.asset(pahtImage, height: 46,),
+      child: Image.asset(pahtImage, height: 36),
     );
   }
-
 }

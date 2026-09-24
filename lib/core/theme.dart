@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const darkBlue = Color(0xFF1F3864);
-  static const accentBlue = Color(0xFF2E75B6);
-  static const incomeGreen = Color(0xFF3CB371);
-  static const expenseRed = Color(0xFFE06666);
-  static const lightGray = Color(0xFFE4E8EC);
+  static const primary = Color(0xFF0F5257);
+  static const accent = Color(0xFF0D9488);
+  static const incomeGreen = Color(0xFF10B981);
+  static const expenseRed = Color(0xFFEF4444);
+  static const lightGray = Color(0xFFF8FAFC);
 
   static const white = Colors.white;
-  static const text = Color(0xFF1F2937);
-  static const textSecondary = Color(0xFF6B7280);
+  static const text = Color(0xFF0F172A);
+  static const textSecondary = Color(0xFF64748B);
+
+  static const darkBlue = primary;
+  static const accentBlue = accent;
 }
 
 class AppTheme {
@@ -18,10 +21,10 @@ class AppTheme {
     fontFamily: "Poppins",
 
     colorScheme: const ColorScheme.light(
-      primary: AppColors.darkBlue,
+      primary: AppColors.primary,
       onPrimary: Colors.white,
 
-      secondary: AppColors.accentBlue,
+      secondary: AppColors.accent,
       onSecondary: Colors.white,
 
       surface: Colors.white,
@@ -34,7 +37,7 @@ class AppTheme {
     scaffoldBackgroundColor: AppColors.lightGray,
 
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.darkBlue,
+      backgroundColor: AppColors.primary,
       foregroundColor: Colors.white,
       elevation: 0,
       centerTitle: false,
@@ -42,15 +45,15 @@ class AppTheme {
 
     textTheme: const TextTheme(
       headlineLarge: TextStyle(
-        color: AppColors.darkBlue,
+        color: AppColors.primary,
         fontWeight: FontWeight.bold,
       ),
       headlineMedium: TextStyle(
-        color: AppColors.darkBlue,
+        color: AppColors.primary,
         fontWeight: FontWeight.bold,
       ),
       titleLarge: TextStyle(
-        color: AppColors.darkBlue,
+        color: AppColors.text,
         fontWeight: FontWeight.w700,
       ),
       bodyLarge: TextStyle(
@@ -63,10 +66,10 @@ class AppTheme {
 
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.accentBlue,
+        backgroundColor: AppColors.primary,
         foregroundColor: Colors.white,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(12),
         ),
         padding: const EdgeInsets.symmetric(
           horizontal: 20,
@@ -79,21 +82,21 @@ class AppTheme {
       filled: true,
       fillColor: Colors.white,
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(12),
         borderSide: const BorderSide(
-          color: AppColors.lightGray,
+          color: Color(0xFFE2E8F0),
         ),
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(12),
         borderSide: const BorderSide(
-          color: AppColors.lightGray,
+          color: Color(0xFFE2E8F0),
         ),
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(12),
         borderSide: const BorderSide(
-          color: AppColors.accentBlue,
+          color: AppColors.primary,
           width: 2,
         ),
       ),
@@ -112,7 +115,7 @@ class AppTheme {
     ),
 
     dividerTheme: const DividerThemeData(
-      color: AppColors.lightGray,
+      color: Color(0xFFE2E8F0),
       thickness: 1,
     ),
   );

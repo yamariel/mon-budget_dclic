@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class BudgetColors {
-  static const income = Color(0xFF3CB371);
-  static const expense = Color(0xFFE06666);
-  static const balance = Color(0xFF1F3864);
+  static const income = Color(0xFF10B981);
+  static const expense = Color(0xFFEF4444);
+  static const balance = Color(0xFF0F5257);
 
-  static const incomeBackground = Color(0xFFEAF7F0);
-  static const expenseBackground = Color(0xFFFCECEC);
-  static const balanceBackground = Color(0xFFEAF0F8);
+  static const incomeBackground = Color(0xFFECFDF5);
+  static const expenseBackground = Color(0xFFFEF2F2);
+  static const balanceBackground = Color(0xFFF0FDFA);
 }
