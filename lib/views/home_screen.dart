@@ -6,6 +6,7 @@ import '../core/buget_colors.dart';
 import '../controllers/transaction_controller.dart';
 import '../core/views/bottom_nav_bar.dart';
 import '../data/category.dart';
+import 'settings_screen.dart';
 import 'stats_screen.dart';
 import 'transaction_form_screen.dart';
 import 'transcation_list_screen.dart';
@@ -37,7 +38,7 @@ class _HomeScaffold extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(title: const Text('Budgeto')),
-      drawer: Drawer(),
+      drawer: Drawer(child: SettingsScreen()),
       body: pages[nav.currentIndex],
       floatingActionButton: FloatingActionButton(
         onPressed: () {
