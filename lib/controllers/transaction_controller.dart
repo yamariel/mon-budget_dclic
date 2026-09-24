@@ -12,10 +12,17 @@ class TransactionController extends ChangeNotifier {
   String? selectedCategoryId;
 
   TransactionController(this.uid) {
-    _firestoreService.watchTransactions(uid).listen((data) {
-      _allTransactions = data;
-      notifyListeners();
-    });
+    _firestoreService
+        .watchTransactions(uid)
+        .listen(
+          (data) {
+            _allTransactions = data;
+            notifyListeners();
+          },
+          onError: (error) {
+            debugPrint('Erreur lors de l\'écoute des transactions : $error');
+          },
+        );
   }
 
   List<model.Transaction> get transactions {

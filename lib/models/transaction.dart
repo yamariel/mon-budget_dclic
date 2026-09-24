@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../enums/transactions_type.dart';
 
 class Transaction {
@@ -18,13 +20,24 @@ class Transaction {
   });
 
   factory Transaction.fromJson(String id, Map<String, dynamic> json) {
+    DateTime parsedDate;
+    if (json['date'] is String) {
+      parsedDate = DateTime.tryParse(json['date']) ?? DateTime.now();
+    } else if (json['date'] is Timestamp) {
+      parsedDate = (json['date'] as Timestamp).toDate();
+    } else {
+      parsedDate = DateTime.now();
+    }
+
     return Transaction(
-      id: id, 
-      amount: (json['amount'] ?? 0).toDouble(), 
-      type: json['type'] == 'revenu' ? TransactionType.revenu : TransactionType.depense, 
-      categoryId: json['categoryId'] ?? '', 
-      date: DateTime.parse(json['date']),
-      note: json['note'] ?? ''
+      id: id,
+      amount: (json['amount'] ?? 0).toDouble(),
+      type: json['type'] == 'revenu'
+          ? TransactionType.revenu
+          : TransactionType.depense,
+      categoryId: json['categoryId'] ?? '',
+      date: parsedDate,
+      note: json['note'] ?? '',
     );
   }
 
