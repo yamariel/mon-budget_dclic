@@ -38,40 +38,42 @@ class TranscationListScreen extends StatelessWidget {
           ),
         ),
         Expanded(
-          child: ListView.builder(
-            itemCount: controller.transactions.length,
-            itemBuilder: (context, index) {
-              final transaction = controller.transactions[index];
-              return Dismissible(
-                key: Key(transaction.id),
-                direction: DismissDirection.startToEnd,
-                onDismissed: (_) {
-                  controller.deleteTransaction(transaction.id);
-                },
-                background: Container(
-                  color: BudgetColors.expense,
-                  alignment: Alignment.centerLeft,
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: const Icon(Icons.delete, color: Colors.white),
+          child: controller.transactions.isEmpty
+              ? const Center(child: Text('Aucune transaction pour le moment.'))
+              : ListView.builder(
+                  itemCount: controller.transactions.length,
+                  itemBuilder: (context, index) {
+                    final transaction = controller.transactions[index];
+                    return Dismissible(
+                      key: Key(transaction.id),
+                      direction: DismissDirection.startToEnd,
+                      onDismissed: (_) {
+                        controller.deleteTransaction(transaction.id);
+                      },
+                      background: Container(
+                        color: BudgetColors.expense,
+                        alignment: Alignment.centerLeft,
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: const Icon(Icons.delete, color: Colors.white),
+                      ),
+                      child: ListTile(
+                        title: Text(categoryById(transaction.categoryId).name),
+                        subtitle: Text(
+                          DateFormat('dd/MM/yyyy').format(transaction.date),
+                        ),
+                        trailing: Text(
+                          currency.format(transaction.signedAmount),
+                          style: TextStyle(
+                            color: transaction.signedAmount >= 0
+                                ? BudgetColors.income
+                                : BudgetColors.expense,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 ),
-                child: ListTile(
-                  title: Text(categoryById(transaction.categoryId).name),
-                  subtitle: Text(
-                    DateFormat('dd/MM/yyyy').format(transaction.date),
-                  ),
-                  trailing: Text(
-                    currency.format(transaction.signedAmount),
-                    style: TextStyle(
-                      color: transaction.signedAmount >= 0
-                          ? BudgetColors.income
-                          : BudgetColors.expense,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              );
-            },
-          ),
         ),
       ],
     );
