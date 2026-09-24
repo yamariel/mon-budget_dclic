@@ -25,6 +25,8 @@ class TransactionController extends ChangeNotifier {
         );
   }
 
+  List<model.Transaction> get allTransactions => _allTransactions;
+
   List<model.Transaction> get transactions {
     return _allTransactions.where((t) {
       final matchMonth =
