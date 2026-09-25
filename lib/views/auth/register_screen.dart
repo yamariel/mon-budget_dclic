@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mon_budget/services/google_auth_service.dart';
 import 'package:provider/provider.dart';
 
 import '../../controllers/auth_controller.dart';
@@ -56,7 +57,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 const SizedBox(height: 8),
                 const Text(
                   "L'application qui vous aide à gérer vos budgets",
-                  style: TextStyle(fontSize: 14, color: AppColors.textSecondary),
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: AppColors.textSecondary,
+                  ),
                 ),
                 const SizedBox(height: 32),
                 MyTextField(
@@ -142,7 +146,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             return;
                           }
                           setState(() => _localError = null);
-                          context.read<AuthController>().signUp(email.text, password.text);
+                          context.read<AuthController>().signUp(
+                            email.text,
+                            password.text,
+                          );
                         },
                       ),
                 const SizedBox(height: 32),
@@ -169,10 +176,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 const SizedBox(height: 32),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    SquareTitle(pahtImage: "assets/google.png"),
+                  children: [
+                    SquareTitle(pahtImage: "assets/google.png", onTap: () => GoogleAuthService().signInWithGoogle()),
                     SizedBox(width: 16),
-                    SquareTitle(pahtImage: "assets/apple.png"),
+                    SquareTitle(pahtImage: "assets/apple.png", onTap: () {}),
                   ],
                 ),
                 const SizedBox(height: 20),
