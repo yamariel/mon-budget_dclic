@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "663318000998",
+    "project_id": "dclic-mon-budget",
+    "storage_bucket": "dclic-mon-budget.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:663318000998:android:2619f562d25c9dd6e444a7",
+        "android_client_info": {
+          "package_name": "com.yamariel.org.mon_budget"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "663318000998-prldlfbkqui4qju0qnbc9vjk422de2pb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yamariel.org.mon_budget",
+            "certificate_hash": "865021d84ad6d0b6019bd0003864fb7dbd3329d3"
+          }
+        },
+        {
+          "client_id": "663318000998-rvl5r6u64t7uib7ka3040gsht581lhaj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiOfuVozoR0EQvwG4Mns80Qhg7GUuU9mM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "663318000998-rvl5r6u64t7uib7ka3040gsht581lhaj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "663318000998-n13jn7ch1kgu5rn9moehce84ehg7mue2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.yamariel.org.monBudget"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
