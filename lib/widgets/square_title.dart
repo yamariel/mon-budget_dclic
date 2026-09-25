@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class SquareTitle extends StatelessWidget {
   final String pahtImage;
+  final String text;
   final Function()? onTap;
-  const SquareTitle({super.key, required this.pahtImage, required this.onTap});
+  const SquareTitle({super.key, required this.pahtImage, required this.onTap, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,13 @@ class SquareTitle extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           color: Colors.white,
         ),
-        child: Image.asset(pahtImage, height: 36),
+        child: Row(
+          children: [
+            Image.asset(pahtImage, height: 36),
+            const SizedBox(width: 3,),
+            Text(text),
+          ],
+        ),
       ),
     );
   }
