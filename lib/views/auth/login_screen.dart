@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mon_budget/services/google_auth_service.dart';
 import 'package:provider/provider.dart';
 
 import '../../controllers/auth_controller.dart';
@@ -132,9 +131,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SquareTitle(pahtImage: "assets/google.png", onTap: () => GoogleAuthService().signInWithGoogle(),),
-                    SizedBox(width: 16),
-                    SquareTitle(pahtImage: "assets/apple.png", onTap: () {  },),
+                    SquareTitle(pahtImage: "assets/google.png", onTap: () => AuthController().google(), text: 'Google',),
+                    //SizedBox(width: 16),
+                    //SquareTitle(pahtImage: "assets/apple.png", onTap: () {  },),
                   ],
                 ),
                 const SizedBox(height: 32),
