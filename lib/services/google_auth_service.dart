@@ -5,7 +5,6 @@ class GoogleAuthService {
   GoogleAuthService() : _initialization = GoogleSignIn.instance.initialize();
 
   final Future<void> _initialization;
-//wY6oOzoTF5WyQDI9
   Future<UserCredential> signInWithGoogle() async {
     await _initialization;
     final GoogleSignIn googleSignIn = GoogleSignIn.instance;
